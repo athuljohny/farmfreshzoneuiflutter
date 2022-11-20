@@ -1,115 +1,280 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Farmfreshui(),
+  ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Farmfreshui extends StatefulWidget {
+  @override
+  State<Farmfreshui> createState() => _FarmfreshuiState();
+}
 
-  // This widget is the root of your application.
+class _FarmfreshuiState extends State<Farmfreshui> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                color: Colors.green,
+              ),
+              label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.shopping_cart,
+                color: Colors.green,
+              ),
+              label: 'Cart'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person,
+                color: Colors.green,
+              ),
+              label: 'Account')
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: Colors.green,
+            title: Text(
+              'Farm freshzone',
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            floating: false,
+            pinned: true,
+            actions: [
+              Padding(
+                padding: EdgeInsets.all(8.0),
+              ),
+              Icon(Icons.location_on_outlined),
+              Padding(padding: EdgeInsets.all(10)),
+              Center(
+                child: Text(
+                  "Kochi",
+                  style: TextStyle(fontSize: 25),
+                ),
+              ),
+            ],
+            bottom: AppBar(
+              backgroundColor: Colors.green,
+              title: Container(
+                color: Colors.white,
+                width: double.infinity,
+                height: 40,
+                child: Center(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'search vegetables,fruits.....',
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ],
-        ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.lightGreen),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      height: 35,
+                      width: 100,
+                      child: Center(
+                        child: Text(
+                          "vegetables",
+                          style: TextStyle(color: Colors.green),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.lightGreen),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      height: 35,
+                      width: 100,
+                      child: Center(
+                        child: Text(
+                          "Exotic",
+                          style: TextStyle(color: Colors.green),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.lightGreen),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      height: 35,
+                      width: 100,
+                      child: Center(
+                        child: Text(
+                          "Fruits",
+                          style: TextStyle(color: Colors.green),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.lightGreen),
+                          borderRadius: BorderRadius.all(Radius.circular(10))),
+                      height: 35,
+                      width: 100,
+                      child: Center(
+                        child: Text(
+                          "Fresh cuts",
+                          style: TextStyle(color: Colors.green),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Container(
+                  child: Image.network(
+                    "https://food.unl.edu/newsletters/images/fresh-vegetables-basket.png",
+                    height: 220,
+                    width: 300,
+                  ),
+                ),
+                SizedBox(
+                  height: 7,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(border: Border.all(width: 1)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Column(
+                          children: [
+                            Icon(
+                              Icons.timer,
+                              color: Colors.greenAccent,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text("30 min policy"),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Icon(
+                              Icons.camera_alt_outlined,
+                              color: Colors.greenAccent,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text("Tracebility"),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Icon(
+                              Icons.work,
+                              color: Colors.greenAccent,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text("Local sourcing"),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SliverList(
+              delegate: SliverChildListDelegate([
+            Padding(
+              padding: EdgeInsets.all(8),
+              child: Text(
+                "Shop by Category",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Farmgrid(),
+          ]))
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+}
+
+class Farmgrid extends StatelessWidget {
+  List<String> images = [
+    "https://images.news18.com/ibnlive/uploads/2021/08/tomato1-16299798893x2.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROvtRXHaAOMuDO_2oW95H17oDFf6zyfJ1fpA&usqp=CAU",
+    "https://images.news18.com/ibnlive/uploads/2021/08/tomato1-16299798893x2.jpg",
+    "https://nationaltoday.com/wp-content/uploads/2021/06/National-Herbs-and-Spices-Day-1-640x514.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGnnQcNCeHzbkq9lu8hm_yj4EC9tvk4_5_TA&usqp=CAU",
+    "https://images.news18.com/ibnlive/uploads/2021/08/tomato1-16299798893x2.jpg",
+  ];
+
+  List<String> names = [
+    "Vegetables",
+    "Fruits",
+    "Exotic",
+    "Fresh cut",
+    "Nutrition Charged",
+    "Packed Flavours"
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        shrinkWrap: true,
+        padding: const EdgeInsets.all(10.0),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, crossAxisSpacing: 5, mainAxisSpacing: 5),
+        itemCount: images.length,
+        itemBuilder: (BuildContext, int index) {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height / 9,
+                width: MediaQuery.of(context).size.width * .3,
+                decoration: BoxDecoration(
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black,
+                      blurRadius: 20.0,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                      fit: BoxFit.cover, image: NetworkImage(images[index])),
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Text(names[index]),
+            ],
+          );
+        });
   }
 }
