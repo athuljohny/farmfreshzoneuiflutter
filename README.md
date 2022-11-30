@@ -1,16 +1,4 @@
 # farmfreshzoneuiflutter
 
-A new Flutter project.
+<img src ="https://user-images.githubusercontent.com/113675481/202918550-44c3f4f5-5b87-41b7-9c4e-7c710f1b6990.png" width ="300" height ="600"/> <img src ="https://user-images.githubusercontent.com/113675481/202918555-2fbc5c8f-7f7d-4d33-8aab-e476b04cc5ed.png" width ="300" height ="600"/>
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
