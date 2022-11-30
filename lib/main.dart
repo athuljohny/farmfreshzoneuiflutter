@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -21,7 +22,7 @@ class _FarmfreshuiState extends State<Farmfreshui> {
         items: const [
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.home,
+                FontAwesomeIcons.houseMedical,
                 color: Colors.green,
               ),
               label: 'Home'),
